@@ -1,6 +1,6 @@
 {
   "name": "wms-xmlify-copy-resource",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Convert a JSON-encoded WMS Copy Resource object into its XML equivalent",
   "main": "index.js",
   "dependencies": {},
@@ -9,7 +9,9 @@
     "test": "tape test/*"
   },
   "keywords": [
-    "wms", "oclc", "copy resource"
+    "wms",
+    "oclc",
+    "copy resource"
   ],
   "author": "Adam Malantonio <adam.malantonio@gmail.com>",
   "license": "MIT",
