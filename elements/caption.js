@@ -10,7 +10,7 @@ module.exports = function caption (c) {
 
   return f('caption', attrs, [
     (c.description ? f('description', {}, c.description) : ''),
-    (c.id && c.id.test(nonNegativeInteger) ? f('id', {}, c.id) : ''),
-    (c.sequence && c.sequence.test(nonNegativeInteger) ? f('sequence', {}, c.sequence) : ''),
+    (c.id && nonNegativeInteger.test(c.id) ? f('id', {}, c.id) : ''),
+    (c.sequence && nonNegativeInteger.test(c.sequence) ? f('sequence', {}, c.sequence) : ''),
   ])
 }
