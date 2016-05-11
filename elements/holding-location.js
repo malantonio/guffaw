@@ -1,8 +1,9 @@
 var f = require('./factory')
 var reg = /^[A-Z]{4}$/
+var isEmpty = require('./helpers').isEmpty
 
 module.exports = function holdingLocation (h) {
-  if (!h) return ''
+  if (isEmpty(h)) return ''
 
   h = h.trim()
   if (h === '') return ''

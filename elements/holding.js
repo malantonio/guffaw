@@ -5,8 +5,13 @@ var cost = require('./cost')
 var tempLocation = require('./temporary-location')
 var caption = require('./caption')
 
+var h = require('./helpers')
+var emptyObject = h.emptyObject
+var notEmpty = h.notEmpty
+
 module.exports = function holding (h) {
   if (!h) return ''
+  if (typeof h !== 'object' || emptyObject(h)) return ''
 
   var category = (h.category || 'BASIC').toUpperCase()
 
@@ -17,5 +22,5 @@ module.exports = function holding (h) {
     (h.cost || []).map(cost).join(''),
     (h.temporaryLocation || []).map(tempLocation).join(''),
     caption(h.caption),
-  ])
+  ].filter(notEmpty))
 }

@@ -1,8 +1,11 @@
 var f = require('./factory')
-var nonNegativeInteger = /^[0-9]+$/
+var h = require('./helpers')
+var isNonNegative = h.isNonNegative
+var notEmpty = h.filterNotEmpty
+var isEmpty = h.isEmpty
 
 module.exports = function caption (c) {
-  if (!c) return ''
+  if (isEmpty(c)) return ''
 
   var attrs = {}
   if (c.enumeration) attrs['enumeration'] = c.enumeration
@@ -10,7 +13,7 @@ module.exports = function caption (c) {
 
   return f('caption', attrs, [
     (c.description ? f('description', {}, c.description) : ''),
-    (c.id && nonNegativeInteger.test(c.id) ? f('id', {}, c.id) : ''),
-    (c.sequence && nonNegativeInteger.test(c.sequence) ? f('sequence', {}, c.sequence) : ''),
-  ])
+    (c.id && isNonNegative(c.id) ? f('id', {}, c.id) : ''),
+    (c.sequence && isNonNegative(c.sequence) ? f('sequence', {}, c.sequence) : ''),
+  ].filter(notEmpty))
 }

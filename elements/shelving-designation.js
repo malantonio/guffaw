@@ -1,6 +1,10 @@
 var f = require('./factory')
+var h = require('./helpers')
+var isEmpty = h.isEmpty
+var notEmpty = h.filterNotEmpty
+
 module.exports = function shelvingDesignation (sd) {
-  if (!sd) return ''
+  if (isEmpty(sd)) return ''
 
   var prefix = (arrayify(sd.prefix) || []).map(function (p) {
     return f('prefix', {}, p)
@@ -21,7 +25,7 @@ module.exports = function shelvingDesignation (sd) {
     (sd.information ? f('information', {}, sd.information) : ''),
     itemPart,
     suffix
-  ])
+  ].filter(notEmpty))
 }
 
 function arrayify (e) {

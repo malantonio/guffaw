@@ -1,5 +1,7 @@
 var f = require('./factory')
+var isEmpty = require('./helpers').isEmpty
+
 module.exports = function institution (d) {
-  if (!d) return ''
+  if (isEmpty(d)) return ''
   return f('institution', {}, d)
 }

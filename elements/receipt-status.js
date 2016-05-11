@@ -1,4 +1,6 @@
 var f = require('./factory')
+var isEmpty = require('./helpers').isEmpty
+
 var types = [
   'ON_ORDER',
   'CURRENTLY_RECEIVED',
@@ -9,9 +11,12 @@ var types = [
 ]
 
 module.exports = function receiptStatus (s) {
-  if (!s) return ''
-  s = s.toUpperCase()
+  if (isEmpty(s)) return ''
 
+  s = s.toUpperCase()
   if (types.indexOf(s) === -1) return ''
+
   return f('receiptStatus', {}, s)
 }
+
+module.exports.types = types

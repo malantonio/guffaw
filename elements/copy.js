@@ -10,9 +10,10 @@ var shelvingDesignation = require('./shelving-designation')
 var shelvingLocation = require('./shelving-location')
 var previousShelvingLocation = require('./previous-shelving-location')
 var holding = require('./holding')
+var isEmpty = require('./helpers').isEmpty
 
 module.exports = function copy (data) {
-  if (!data) return ''
+  if (isEmpty(data)) return ''
 
   return f('copy', {xmlns: 'http://worldcat.org/xmlschemas/Copy-1.0', id: data.id}, [
     institution(data.institution),
