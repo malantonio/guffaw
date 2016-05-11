@@ -23,3 +23,8 @@ test('accepts string; displays STAFF note', function (t) {
   t.plan(1)
   t.equal(n('Hallo!'), expect)
 })
+
+test('accepts numbers as well', function (t) {
+  t.plan(1)
+  t.equal(n(123456), '<note type="STAFF">123456</note>')
+})
